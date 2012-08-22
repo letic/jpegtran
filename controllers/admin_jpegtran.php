@@ -35,7 +35,7 @@ class Admin_Jpegtran_Controller extends Admin_Controller {
     // Get module parameters from the DB
     $view->content->path = module::get_var("jpegtran", "path");
     // First time run (no param in the DB)
-    if (empty($view->content->path) && ! empty($path)) {
+    if (isset($view->content->path) && ! empty($path)) {
       // Add the located path in the DB
       module::set_var("jpegtran", "path", $path);
       $view->content->path = $path;
