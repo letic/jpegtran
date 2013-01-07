@@ -25,10 +25,10 @@ class gallery_graphics extends gallery_graphics_Core {
    * @param string     $output_file
    * @param array      $options
    */
-  static function rotate($input_file, $output_file, $options) {
+  static function rotate($input_file, $output_file, $options, $item=null) {
     graphics::init_toolkit();
 
-    module::event("graphics_rotate", $input_file, $output_file, $options);
+    module::event("graphics_rotate", $input_file, $output_file, $options, $item);
 
     // Convert degrees for jpegtran specific format
     $jt_degrees = $options["degrees"];
@@ -46,6 +46,6 @@ class gallery_graphics extends gallery_graphics_Core {
         ->save($output_file);
     }
 
-    module::event("graphics_rotate_completed", $input_file, $output_file, $options);
+    module::event("graphics_rotate_completed", $input_file, $output_file, $options, $item);
   }
 }
